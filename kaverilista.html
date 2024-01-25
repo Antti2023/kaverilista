@@ -24,7 +24,7 @@
             if (nimi.trim() !== "") {
                 kaverit.push(nimi);
                 paivitaKaveriLista();
-                document.getElementById("kaverin-nimi").value = ""; // Tyhjennä tekstikenttä
+                document.getElementById("kaverin-nimi").value = "";
             }
         }
 
@@ -34,7 +34,7 @@
             if (indeksi !== -1) {
                 kaverit.splice(indeksi, 1);
                 paivitaKaveriLista();
-                document.getElementById("kaverin-nimi").value = ""; // Tyhjennä tekstikenttä
+                document.getElementById("kaverin-nimi").value = ""; 
             }
         }
 
@@ -45,7 +45,7 @@
 
         function paivitaKaveriLista() {
             var lista = document.getElementById("kaveri-lista");
-            lista.innerHTML = ""; // Tyhjennä lista
+            lista.innerHTML = ""; 
 
             for (var i = 0; i < kaverit.length; i++) {
                 var listItem = document.createElement("li");
