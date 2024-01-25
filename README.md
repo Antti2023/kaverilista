@@ -1,2 +1,58 @@
 # kaverilista
-tehtävänä oli luoda kaverlista mikä pystyy lisämään, poistamaan tai järjestämään syötetyt nimet.
+<html>
+<head>
+    <title>Kaverilista</title>
+</head>
+<body>
+    <h2>Kaverilista</h2>
+
+    <form id="kaveri-lomake">
+        <input type="text" id="kaverin-nimi" placeholder="Syötä kaverin nimi">
+        <button type="button" onclick="lisaaKaveri()">Lisää kaveri</button>
+        <button type="button" onclick="poistaKaveri()">Poista kaveri</button>
+        <button type="button" onclick="jarjestaKaverit()">Järjestä kaverit</button>
+    </form>
+
+    <h3>Kaverit:</h3>
+    <ul id="kaveri-lista"></ul>
+
+    <script>
+        var kaverit = [];
+
+        function lisaaKaveri() {
+            var nimi = document.getElementById("kaverin-nimi").value;
+            if (nimi.trim() !== "") {
+                kaverit.push(nimi);
+                paivitaKaveriLista();
+                document.getElementById("kaverin-nimi").value = "";
+            }
+        }
+
+        function poistaKaveri() {
+            var nimi = document.getElementById("kaverin-nimi").value;
+            var indeksi = kaverit.indexOf(nimi);
+            if (indeksi !== -1) {
+                kaverit.splice(indeksi, 1);
+                paivitaKaveriLista();
+                document.getElementById("kaverin-nimi").value = ""; 
+            }
+        }
+
+        function jarjestaKaverit() {
+            kaverit.sort();
+            paivitaKaveriLista();
+        }
+
+        function paivitaKaveriLista() {
+            var lista = document.getElementById("kaveri-lista");
+            lista.innerHTML = ""; 
+
+            for (var i = 0; i < kaverit.length; i++) {
+                var listItem = document.createElement("li");
+                listItem.appendChild(document.createTextNode(kaverit[i]));
+                lista.appendChild(listItem);
+            }
+        }
+    </script>
+</body>
+</html>
